@@ -1,5 +1,9 @@
 /* Licencja MIT */
 /* Autor - Stanisław Bitner */
+#ifndef RENTIB_H_
+#define RENTIB_H_
+
+#include "inverse_permutation.h"
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -8,8 +12,6 @@
 
 #define TESTS_NO 1000000
 
-bool inverse_permutation(size_t n, int *p);
-
 static bool check_inverse_permutation(size_t n, int const *p1, int const *p2) {
   for (size_t i = 0; i < n; ++i)
     if ((size_t)p2[p1[i]] != i)
@@ -17,16 +19,12 @@ static bool check_inverse_permutation(size_t n, int const *p1, int const *p2) {
   return true;
 }
 
-int main(int argc, char *argv[]) {
+int rentib_test(unsigned int seed) {
   size_t n, i, j;
-  int *p = malloc(TESTS_NO * sizeof(int)), *q = malloc(TESTS_NO * sizeof(int));
+  int *p = (int *) malloc(TESTS_NO * sizeof(int)),
+      *q = (int *) malloc(TESTS_NO * sizeof(int));
 
-  if (argc < 2) {
-    printf("Usage: test seed");
-    return 0;
-  }
-
-  srand(atoi(argv[1]));
+  srand(seed);
 
   for (n = 0; n < TESTS_NO; ++n) {
     printf("%zu\n", n);
@@ -64,3 +62,5 @@ int main(int argc, char *argv[]) {
 
   return 0;
 }
+
+#endif
