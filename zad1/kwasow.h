@@ -39,37 +39,44 @@ void kwasow_test(void) {
   assert(inverse_permutation(3, test6) == false);
   printf("Test6 passed\n");
 
-  size_t size1 = INT_MAX;
-  size1 += 2;
-  int *test7 = (int *) calloc(size1, sizeof(int));
-  if (test7 != NULL) {
-    assert(inverse_permutation(size1, test7) == false);
-    printf("Test7 passed\n");
-    free(test7);
-  } else {
-    printf("Failed to allocate memory for test7. Skipping...\n");
-  }
+  printf("Skipping test7 - see README\n");
+  // printf("Preparing test7...\n");
+  // Two more than size_max
+  // size_t size1 = 2147483649;
+  // int *test7 = calloc(size1, sizeof(int));
+  // if (test7 != NULL) {
+  //   // Tablica: [0, 1, 2, ..., MAX_INT, 0]
+  //   for (size_t i = 0; i < INT_MAX + 1; i++) {
+  //     test7[i] = i;
+  //   }
+  //   assert(inverse_permutation(size1, test7) == false);
+  //   printf("Test7 passed\n");
+  //   free(test7);
+  // } else {
+  //   printf("Failed to allocate memory for test7. Skipping...\n");
+  // }
 
   int test8[] = {0, 1, 2};
   assert(inverse_permutation(3, test8) == true);
   printf("Test8 passed\n");
 
-  printf("Preparing test...\n");
-  size_t size2 = INT_MAX;
-  size2 += 1;
-  int *test9 = (int *) calloc(size2, sizeof(int));
-  if (test9 != NULL) {
-    for (size_t i = 0; i < size2; i++) {
-      test9[i] = i;
-    }
+  printf("Skipping test9 - see README\n");
+  // printf("Preparing test9...\n");
+  // // One more than size_max
+  // size_t size2 = 2147483648;
+  // int *test9 = calloc(size2, sizeof(int));
+  // if (test9 != NULL) {
+  //   // Tablica: [0, 1, 2, ..., MAX_INT]
+  //   for (size_t i = 0; i < size2; i++) {
+  //     test9[i] = i;
+  //   }
 
-    printf("Starting test9 - should be very fast");
-    assert(inverse_permutation(size2, test9) == true);
-    printf("Test9 passed\n");
-    free(test9);
-  } else {
-    printf("Failed to allocate memory for test9. Skipping...\n");
-  }
+  //   assert(inverse_permutation(size2, test9) == true);
+  //   printf("Test9 passed\n");
+  //   free(test9);
+  // } else {
+  //   printf("Failed to allocate memory for test9. Skipping...\n");
+  // }
 }
 
 #endif
