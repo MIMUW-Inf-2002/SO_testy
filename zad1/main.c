@@ -8,6 +8,6 @@ int main(void) {
   unsigned int rentib_seed = 213742069;
   rentib_test(rentib_seed);
 
-  printf("=> Running Kwasow tests\n");
+  printf("\n=> Running Kwasow tests\n");
   kwasow_test();
 }
