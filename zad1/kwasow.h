@@ -21,22 +21,37 @@ void kwasow_test(void) {
 
   int test2[] = {1, 3, 2};
   assert(inverse_permutation(3, test2) == false);
+  assert(test2[0] == 1);
+  assert(test2[1] == 3);
+  assert(test2[2] == 2);
   printf("Test2 passed\n");
 
   int test3[] = {-1, 2, 0};
   assert(inverse_permutation(3, test3) == false);
+  assert(test3[0] == -1);
+  assert(test3[1] == 2);
+  assert(test3[2] == 0);
   printf("Test3 passed\n");
 
   int test4[] = {1, 2, 3};
   assert(inverse_permutation(3, test4) == false);
+  assert(test4[0] == 1);
+  assert(test4[1] == 2);
+  assert(test4[2] == 3);
   printf("Test4 passed\n");
 
-  int test5[] = {1, 1, 3};
+  int test5[] = {1, 1, 2};
   assert(inverse_permutation(3, test5) == false);
+  assert(test5[0] == 1);
+  assert(test5[1] == 1);
+  assert(test5[2] == 2);
   printf("Test5 passed\n");
 
-  int test6[] = {0, 0, 3};
+  int test6[] = {0, 0, 2};
   assert(inverse_permutation(3, test6) == false);
+  assert(test6[0] == 0);
+  assert(test6[1] == 0);
+  assert(test6[2] == 2);
   printf("Test6 passed\n");
 
   printf("Skipping test7 - see README\n");
@@ -58,6 +73,9 @@ void kwasow_test(void) {
 
   int test8[] = {0, 1, 2};
   assert(inverse_permutation(3, test8) == true);
+  assert(test8[0] == 0);
+  assert(test8[1] == 1);
+  assert(test8[2] == 2);
   printf("Test8 passed\n");
 
   printf("Skipping test9 - see README\n");
