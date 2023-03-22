@@ -27,8 +27,6 @@ int rentib_test(unsigned int seed) {
   srand(seed);
 
   for (n = 0; n < TESTS_NO; ++n) {
-    printf("%zu\n", n);
-
     for (i = 0; i < n; i++)
       q[i] = i;
 
