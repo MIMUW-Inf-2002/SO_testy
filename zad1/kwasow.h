@@ -61,7 +61,7 @@ void kwasow_test(void) {
   // int *test7 = calloc(size1, sizeof(int));
   // if (test7 != NULL) {
   //   // Tablica: [0, 1, 2, ..., MAX_INT, 0]
-  //   for (size_t i = 0; i < INT_MAX + 1; i++) {
+  //   for (size_t i = 0; i <= INT_MAX; i++) {
   //     test7[i] = i;
   //   }
   //   assert(inverse_permutation(size1, test7) == false);
