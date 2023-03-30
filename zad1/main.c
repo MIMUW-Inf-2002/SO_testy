@@ -17,6 +17,6 @@ int main(void) {
   rentib_test(rentib_seed);
 
   unsigned int rog1gor_seed = 146543;
-  printf("=> Running rog1gor tests\n");
+  printf("\n=> Running rog1gor tests\n");
   rog1gor_test(rog1gor_seed);
 }
