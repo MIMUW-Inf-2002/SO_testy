@@ -95,6 +95,25 @@ void kwasow_test(void) {
   // } else {
   //   printf("Failed to allocate memory for test9. Skipping...\n");
   // }
+  
+  printf("Skipping test10 - see README\n");
+  // printf("Preparing test10...\n");
+  // // One more than size_max
+  // size_t size3 = 2147483648;
+  // int *test10 = calloc(size3, sizeof(int));
+  // if (test10 != NULL) {
+  //   // Tablica: [0, 1, 2, ..., MAX_INT] z jednym powtórzeniem
+  //   for (size_t i = 0; i < size3; i++) {
+  //     test10[i] = i;
+  //   }
+  //   test10[size3 - 1] = 14369;
+
+  //   assert(inverse_permutation(size3, test10) == false);
+  //   printf("Test10 passed\n");
+  //   free(test10);
+  // } else {
+  //   printf("Failed to allocate memory for test10. Skipping...\n");
+  // }
 }
 
 #endif
