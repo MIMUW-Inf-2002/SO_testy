@@ -1,8 +1,7 @@
 /**
  * Autor: Leonardo Fibonacci z Pizy & Deparchator z Discorda
  *
- * Program oblicza k-tą liczbę Fibonacciego mod 2^64.
- * Wartość k jest argumentem wywołania programu (np. ./fib 42).
+ * Program oblicza 42-gą liczbę Fibonacciego mod 2^64.
  * Program wykorzystuje do obliczenia 3 zsynchronizowane rdzenie.
  *
  * Wynik jest weryfikowany z wynikiem funkcji
@@ -61,8 +60,8 @@ core_thread(void *params)
   return NULL;
 }
 
-uint64_t
-fib(uint64_t k)
+uint64_t 
+fib(uint64_t k) 
 {
   if (k <= 1) return k;
 
@@ -80,9 +79,9 @@ fib(uint64_t k)
 }
 
 int
-main(void)
+main(void) 
 {
-  uint64_t k = N;
+  uint64_t k = 42;
   static pthread_t tid[3];
   static core_call_t params[3];
   char *computation[3];
