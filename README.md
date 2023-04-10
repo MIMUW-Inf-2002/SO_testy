@@ -52,7 +52,7 @@ make
     <li> kwasow_advanced (część 1) – dwa testy, które sprawdzają, czy funkcja
       core nie psuje się, jeśli funkcje get_value i put_value zmodyfikują
       wartości w rejestrach</li>
-    <li> kwasow_advanced (część 2) – test sprawdza, czy funkca core nie psuje
+    <li> kwasow_advanced (część 2) – test sprawdza, czy funkcja core nie psuje
       (przywraca) wartości w rejestrach, w których powinna to zrobić</li>
   </ul>
 </details>
