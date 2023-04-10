@@ -16,6 +16,12 @@ options:
 
 solve: core.asm
 	nasm -DN=$(N) -f elf64 -w+all -w+error -o core.o core.asm
+	
+fib: core.o fib.o
+	gcc -z noexecstack -pthread -o fib core.o fib.o
+
+fib.o: fib.c
+	gcc -c -Wall -Wextra -std=c17 -O2 -o fib.o fib.c
 
 .c.o:
 	$(CC) $(CFLAGS) -c $<
