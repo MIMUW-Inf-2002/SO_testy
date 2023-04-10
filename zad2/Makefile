@@ -1,8 +1,8 @@
-N = 1000
+N = 10
 CFLAGS = -pedantic -Wall -Wextra -Werror -std=c17 -lpthread -DN=$(N)
 CC = gcc
 
-TESTS = rentib
+TESTS = rentib fib
 
 all: options solve $(TESTS:=.o)
 	for i in $(TESTS); do $(CC) $(CFLAGS) -o $$i $$i.o core.o; done
