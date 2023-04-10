@@ -5,7 +5,9 @@
 #include <stdio.h>
 
 /* ================================= SETUP ================================== */
+#ifndef N
 #define N 2
+#endif
 
 uint64_t core(uint64_t n, char const *p);
 uint64_t get_value(uint64_t n) {
