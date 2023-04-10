@@ -8,7 +8,7 @@
 
    The above copyright notice and this permission notice shall be included in
    all copies or substantial portions of the Software.
-   If it is not included, then the user must give up hist firstborn to the
+   If it is not included, then the user must give up their firstborn to the
    author of this software.
 
    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
