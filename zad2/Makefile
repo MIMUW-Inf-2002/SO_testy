@@ -1,5 +1,5 @@
 N = 10
-CFLAGS = -pedantic -Wall -Wextra -Werror -std=c17 -lpthread -DN=$(N)
+CFLAGS = -z noexecstack -pedantic -Wall -Wextra -Werror -std=c17 -lpthread -DN=$(N)
 CC = gcc
 
 TESTS = basic_sync fib fib2 sync
