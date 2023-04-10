@@ -34,3 +34,12 @@ Aby uruchomić testy należy wykonać polecenie:
   udaje się je odpalić, ale zazwyczaj failują. Jeśli masz dostępne ponad 4GB
   ramu, to możesz je odkomentować.
 </details>
+
+## Zadanie 2 - Rozproszona maszyna stosowa
+
+Aby uruchomić testy umieść plik o nazwie `core.asm` w katalogu
+`zad2`. Następnie wejdź do niego, skompiluj i odpal testy:
+
+```
+make
+```
