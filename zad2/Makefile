@@ -2,7 +2,7 @@ N = 10
 CFLAGS = -pedantic -Wall -Wextra -Werror -std=c17 -lpthread -DN=$(N)
 CC = gcc
 
-TESTS = basic_sync fib fib2
+TESTS = basic_sync fib fib2 sync
 
 all: options solve $(TESTS:=.o)
 	for i in $(TESTS); do $(CC) $(CFLAGS) -o $$i $$i.o core.o; done
