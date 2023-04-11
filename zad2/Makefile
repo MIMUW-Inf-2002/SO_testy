@@ -2,7 +2,7 @@ N = 10
 CFLAGS = -z noexecstack -pedantic -Wall -Wextra -Werror -std=c17 -pthread -DN=$(N)
 CC = gcc
 
-TESTS = kwasow_simple basic_sync fib fib2 sync
+TESTS = kwasow_simple basic_sync fib fib2 sync abi
 
 all: options solve $(TESTS:=.o) kwasow_advanced
 	for i in $(TESTS); do $(CC) $(CFLAGS) -o $$i $$i.o core.o; done
