@@ -73,5 +73,9 @@ int main(void) {
   assert(core_test(1, "G") == 2);
   printf("G     passed\n");
 
-  // printf("B     passed\n");
+  assert(core_test(0, "10B") == 1);
+  assert(core_test(0, "41B") == 4);
+  assert(core_test(0, "451B*") == 20);
+  assert(core_test(0, "55B00002*") == 10);
+  printf("B     passed\n");
 }
