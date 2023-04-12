@@ -29,7 +29,7 @@
 #define N 3
 #endif
 
-uint64_t core(uint64_t n, const char *p);
+uint64_t core_test(uint64_t n, const char *p);
 
 uint64_t get_value(uint64_t n) {
   assert(n < 3);
@@ -50,9 +50,11 @@ static volatile int wait = 0;
 
 static void *core_thread(void *params) {
   core_call_t *cp = (core_call_t *)params;
+
   while (wait == 0);
-  cp->result = core(cp->n, cp->p);
-  return NULL;
+  cp->result = core_test(cp->n, cp->p);
+
+return NULL;
 }
 
 uint64_t fib(uint64_t k) {

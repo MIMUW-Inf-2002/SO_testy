@@ -1,16 +1,26 @@
 section .data
-
 test_string db '245+*', 0
+
+section .rodata
+error_msg db 'kwasow_advanced failed', 0
+error_msg_len equ 19
 
 section .text
 global get_value, put_value, advanced_test
 extern core
 
 %macro fail_test 0
+  ; Print error
+  mov eax, 1                    ; Set syscall number for write()
+  mov edi, 1                    ; Set file descriptor for stdout
+  lea rsi, [rel error_msg]      ; Set address of error message string
+  mov rdx, error_msg_len        ; Set length of error message string
+  syscall                       ; Call write()
+  ; Exit program
   mov eax, 1
   xor ebx, ebx
-  inc ebx ; set error code to 1
-  int 0x80
+  inc ebx                       ; Set error code to 1
+  int 0x80                      ; Exit program
 %endmacro
 
 ; uint64_t get_value(uint64_t n)
@@ -71,56 +81,4 @@ put_value:
   add   r11, 0x109
   ret
 .argument_incorrect:
-  fail_test
-
-RBP_VALUE equ 0x817328
-RBX_VALUE equ 0x10c9471
-R12_VALUE equ 0x17283
-R13_VALUE equ 0x19274
-R14_VALUE equ 0x1284a
-R15_VALUE equ 0x18f73d
-
-advanced_test:
-  ; Save on stack
-  push  rbp
-  push  rbx
-  push  r12
-  push  r13
-  push  r14
-  push  r15
-  sub   rsp, 0x8
-  ; Move values
-  mov   ebp, RBP_VALUE
-  mov   ebx, RBX_VALUE
-  mov   r12d, R12_VALUE
-  mov   r13d, R13_VALUE
-  mov   r14d, R14_VALUE
-  mov   r15d, R15_VALUE
-  ; Call
-  mov   rdi, 0x0
-  lea   rsi, [rel test_string] ; Should be 18, but not checking
-  call  core
-  ; Test
-  cmp   ebp, RBP_VALUE
-  jne   .error
-  cmp   ebx, RBX_VALUE
-  jne   .error
-  cmp   r12d, R12_VALUE
-  jne   .error
-  cmp   r13d, R13_VALUE
-  jne   .error
-  cmp   r14d, R14_VALUE
-  jne   .error
-  cmp   r15d, R15_VALUE
-  jne   .error
-  ; Restore values
-  add   rsp, 0x8
-  pop   r15
-  pop   r14
-  pop   r13
-  pop   r12
-  pop   rbx
-  pop   rbp
-  ret
-.error:
   fail_test

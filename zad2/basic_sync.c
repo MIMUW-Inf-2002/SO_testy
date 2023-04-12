@@ -37,7 +37,7 @@ typedef struct {
   uint64_t res;
 } CoreCall;
 
-extern uint64_t core(uint64_t n, const char *p);
+extern uint64_t core_test(uint64_t n, const char *p);
 
 uint64_t
 get_value(uint64_t n)
@@ -62,7 +62,7 @@ core_thread(void *arg)
 
   while (atomic_load(&wait)) {}
 
-  cp->res = core(cp->n, cp->p);
+  cp->res = core_test(cp->n, cp->p);
 
   return 0;
 }

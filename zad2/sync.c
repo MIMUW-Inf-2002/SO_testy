@@ -35,7 +35,7 @@ typedef struct {
   uint64_t res;
 } CoreCall;
 
-extern uint64_t core(uint64_t n, const char *p);
+extern uint64_t core_test(uint64_t n, const char *p);
 
 static uint64_t value[N];
 
@@ -57,7 +57,7 @@ int
 core_thread(void *arg)
 {
   CoreCall *cc = arg;
-  cc->res = core(cc->n, cc->p);
+  cc->res = core_test(cc->n, cc->p);
   return 0;
 }
 
