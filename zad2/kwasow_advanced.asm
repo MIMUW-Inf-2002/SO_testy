@@ -1,16 +1,26 @@
 section .data
-
 test_string db '245+*', 0
+
+section .rodata
+error_msg db 'kwasow_advanced failed', 0
+error_msg_len equ 19
 
 section .text
 global get_value, put_value, advanced_test
 extern core
 
 %macro fail_test 0
+  ; Print error
+  mov eax, 1                    ; Set syscall number for write()
+  mov edi, 1                    ; Set file descriptor for stdout
+  lea rsi, [rel error_msg]      ; Set address of error message string
+  mov rdx, error_msg_len        ; Set length of error message string
+  syscall                       ; Call write()
+  ; Exit program
   mov eax, 1
   xor ebx, ebx
-  inc ebx ; set error code to 1
-  int 0x80
+  inc ebx                       ; Set error code to 1
+  int 0x80                      ; Exit program
 %endmacro
 
 ; uint64_t get_value(uint64_t n)

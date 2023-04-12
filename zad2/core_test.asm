@@ -2,8 +2,8 @@ section .data
 test_string db '245+*', 0
 
 section .rodata
-error_msg db 'core_test failed - registers not preserved', 0
-error_msg_len equ 38
+error_msg db 'core_test failed - registers not preserved', 10
+error_msg_len equ 43
 
 section .text
 global core_test
