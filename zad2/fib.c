@@ -1,7 +1,9 @@
 /**
  * Autor: Leonardo Fibonacci z Pizy & Deparchator z Discorda
  *
- * Program oblicza 42-gą liczbę Fibonacciego mod 2^64.
+ * Program oblicza domyślnie k = 42-gą liczbę Fibonacciego mod 2^64.
+ * Jednak k można zmienić w linii 77 na dowolne nieujemne.
+ *
  * Program wykorzystuje do obliczenia 3 zsynchronizowane rdzenie.
  *
  * Wynik jest weryfikowany z wynikiem funkcji
@@ -29,16 +31,12 @@
 
 uint64_t core_test(uint64_t n, const char *p);
 
-uint64_t
-get_value(uint64_t n)
-{
+uint64_t get_value(uint64_t n) {
   assert(n < 3);
   return n + 1;
 }
 
-void
-put_value(uint64_t n, uint64_t v)
-{
+void put_value(uint64_t n, uint64_t v) {
   assert(n < 3);
   assert(v == n + 4);
 }
@@ -50,20 +48,18 @@ typedef struct {
 
 static volatile int wait = 0;
 
-static void *
-core_thread(void *params)
-{
+static void *core_thread(void *params) {
   core_call_t *cp = (core_call_t *)params;
-  while (wait == 0)
-    ;
+
+  while (wait == 0);
   cp->result = core_test(cp->n, cp->p);
-  return NULL;
+
+return NULL;
 }
 
-uint64_t 
-fib(uint64_t k) 
-{
-  if (k <= 1) return k;
+uint64_t fib(uint64_t k) {
+  if (k <= 1)
+    return k;
 
   uint64_t a = 1;
   uint64_t b = 1;
@@ -78,10 +74,9 @@ fib(uint64_t k)
   return b;
 }
 
-int
-main(void) 
-{
-  uint64_t k = 42;
+int main(void) {
+  static_assert(N > 2, "Potrzebne co najmniej 3 rdzenie.");
+  uint64_t k = 42; // UWAGA!!! MOŻNA TU ZMIENIĆ K NA DOWOLNE NIEUJEMNE. POLECAM K RZĘDU 10^5.
   static pthread_t tid[3];
   static core_call_t params[3];
   char *computation[3];
@@ -95,7 +90,6 @@ main(void)
     computation[0][0] = '0';
   } else {
     for (uint64_t i = 0; i < k; i++) computation[0][i] = '1';
-
     for (uint64_t i = k; i < pref_len; i++) computation[0][i] = '+';
   }
 
@@ -114,12 +108,12 @@ main(void)
   }
 
   for (size_t n = 0; n < 3; ++n)
-    assert(0 ==
-           pthread_create(&tid[n], NULL, &core_thread, (void *)&params[n]));
+    assert(0 == pthread_create(&tid[n], NULL, &core_thread, (void *)&params[n]));
 
   wait = 1;
 
-  for (size_t n = 0; n < 3; ++n) assert(0 == pthread_join(tid[n], NULL));
+  for (size_t n = 0; n < 3; ++n)
+    assert(0 == pthread_join(tid[n], NULL));
 
   printf("%lu", params[1].result);
 
@@ -134,6 +128,8 @@ main(void)
   printf("\x1b[0m");
 
   free(computation[0]);
+
+  assert(params[1].result == res);
 
   return 0;
 }
