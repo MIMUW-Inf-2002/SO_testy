@@ -24,17 +24,17 @@ int main(void) {
   // Basic, single operation tests
   assert(core_test(0, "9") == 9);
   assert(core_test(0, "934") == 4);
-  printf("[0-9] passed\n");
+  printf("[0-9] \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "12+") == 3);
-  printf("+     passed\n");
+  printf("+     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "12*") == 2);
   assert(core_test(0, "22*") == 4);
   assert(core_test(0, "34*") == 12);
   assert(core_test(0, "4827*") == 14);
   assert(core_test(0, "48*27**") == 448);
-  printf("*     passed\n");
+  printf("*     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "0-") == 0);
   assert(core_test(0, "1-") == UINT64_MAX);
@@ -42,17 +42,17 @@ int main(void) {
   assert(core_test(0, "19-") == UINT64_MAX - 8);
   assert(core_test(0, "19-8+") == UINT64_MAX);
   assert(core_test(0, "19-9+") == 0);
-  printf("-     passed\n");
+  printf("-     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "n") == 0);
   assert(core_test(12, "n") == 12);
   assert(core_test(UINT64_MAX, "n") == UINT64_MAX);
-  printf("n     passed\n");
+  printf("n     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "12C") == 1);
   assert(core_test(0, "1243C") == 4);
   assert(core_test(0, "123CCC9") == 9);
-  printf("C     passed\n");
+  printf("C     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "1DC") == 1);
   assert(core_test(0, "1D2") == 2);
@@ -60,22 +60,22 @@ int main(void) {
   assert(core_test(0, "1298DC") == 8);
   assert(core_test(0, "98DCDCDCDC") == 8);
   assert(core_test(0, "98DCDCDCDCC") == 9);
-  printf("D     passed\n");
+  printf("D     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "12E") == 1);
   assert(core_test(0, "1243E") == 4);
   assert(core_test(0, "1243EC") == 3);
   assert(core_test(0, "1243ECC") == 2);
   assert(core_test(0, "1243ECCC") == 1);
-  printf("E     passed\n");
+  printf("E     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "G") == 1);
   assert(core_test(1, "G") == 2);
-  printf("G     passed\n");
+  printf("G     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "10B") == 1);
   assert(core_test(0, "41B") == 4);
   assert(core_test(0, "451B0*") == 20);
   assert(core_test(0, "55B000002*") == 10);
-  printf("B     passed\n");
+  printf("B     \x1B[32mpassed\x1B[0m\n");
 }
