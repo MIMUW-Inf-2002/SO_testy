@@ -44,6 +44,9 @@ Aby uruchomić testy umieść plik o nazwie `core.asm` w katalogu
 make
 ```
 
+Przy tworzeniu testów najlepiej używać funkcji `core_test` zamiast `core`.
+Zdefiniowana jest w pliku `core_test.asm` i ma taki sam interfejs jak `core`.
+
 #### Opisy testów
 
 <details><summary>kwasow</summary>
