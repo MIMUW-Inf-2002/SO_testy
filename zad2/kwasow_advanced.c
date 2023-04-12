@@ -24,12 +24,12 @@ int main(void) {
   assert(core_test(0, "123+G3+") == 13);
   assert(core_test(0, "123+G123+") == 5);
   assert(core_test(0, "123+G123+G123+") == 5);
-  printf("G passed\n");
+  printf("G \x1B[32mpassed\x1B[0m\n");
 
   printf("Running P test - if no confirmation then test failed...\n");
   assert(core_test(0, "35*") == 15);
   assert(core_test(0, "135*P") == 1);
   assert(core_test(0, "135*P135*P") == 1);
   assert(core_test(0, "135*P135*P135*") == 15);
-  printf("P passed\n");
+  printf("P \x1B[32mpassed\x1B[0m\n");
 }
