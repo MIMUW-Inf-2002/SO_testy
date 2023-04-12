@@ -6,7 +6,7 @@ TESTS = kwasow_simple basic_sync fib fib2 sync
 
 all: options solve core_test $(TESTS:=.o) kwasow_advanced
 	for i in $(TESTS); do $(CC) $(CFLAGS) -o $$i $$i.o core_test.o core.o; done
-	for i in $(TESTS) kwasow_advanced; do echo "Running $$i"; ./$$i; if [ $$? -eq 0 ]; then echo "\e[42mPassed\e[0m"; else echo "\e[31mFailed\e[0m"; fi; done
+	for i in $(TESTS) kwasow_advanced; do echo -e "Running $$i"; ./$$i; if [ $$? -eq 0 ]; then echo -e "\e[32;1mPassed\e[0m"; else echo -e "\e[31;1mFailed\e[0m"; fi; done
 
 options:
 	@echo "build options:"
