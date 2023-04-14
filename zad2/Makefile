@@ -29,4 +29,4 @@ kwasow_advanced: kwasow_advanced.c kwasow_advanced.asm solve core_test
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -f *.o $(TESTS)
+	rm -f *.o $(TESTS) kwasow_advanced
