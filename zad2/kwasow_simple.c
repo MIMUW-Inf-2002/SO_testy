@@ -74,7 +74,7 @@ int main(void) {
   printf("G     \x1B[32mpassed\x1B[0m\n");
 
   assert(core_test(0, "10B") == 1);
-  assert(core_test(0, "41B") == 4);
+  assert(core_test(0, "41B0") == 4);
   assert(core_test(0, "451B0*") == 20);
   assert(core_test(0, "55B000002*") == 10);
   printf("B     \x1B[32mpassed\x1B[0m\n");
