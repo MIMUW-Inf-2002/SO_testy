@@ -23,6 +23,7 @@
 #include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <threads.h>
 
 #ifndef N
@@ -37,7 +38,7 @@ typedef struct {
 
 extern uint64_t core_test(uint64_t n, const char *p);
 
-static uint64_t value[N];
+static uint64_t *value;
 
 uint64_t
 get_value(uint64_t n)
@@ -61,14 +62,26 @@ core_thread(void *arg)
   return 0;
 }
 
+void *
+ecalloc(size_t nmemb, size_t size)
+{
+  void *p;
+  if (!(p = calloc(nmemb, size))) {
+    fprintf(stderr, "buy more ram lol\n");
+    exit(EXIT_FAILURE);
+  }
+  return p;
+}
+
 int
 main(void)
 {
   static_assert(N > 1, "N must be greater than 1");
 
   size_t n;
-  thrd_t thrd[N];
-  CoreCall cc[N];
+  thrd_t *thrd = ecalloc(N, sizeof(thrd_t));
+  CoreCall *cc = ecalloc(N, sizeof(CoreCall));
+  value = ecalloc(N, sizeof(uint64_t));
 
   const char *p[2] = {
       "1nGPE1E-+7BEn1+S6BEn1-+SG1-+56*-BC",
@@ -92,5 +105,7 @@ main(void)
 
   for (n = 0; n < N; ++n) assert(cc[n].res == N - 1 - n);
 
-  return 0;
+  free(thrd);
+  free(cc);
+  return EXIT_SUCCESS;
 }

@@ -25,6 +25,8 @@
 #include <stdatomic.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <threads.h>
 
 #ifndef N
@@ -67,15 +69,26 @@ core_thread(void *arg)
   return 0;
 }
 
+void *
+ecalloc(size_t nmemb, size_t size)
+{
+  void *p;
+  if (!(p = calloc(nmemb, size))) {
+    fprintf(stderr, "buy more ram lol\n");
+    exit(EXIT_FAILURE);
+  }
+  return p;
+}
+
 int
 main(void)
 {
   static_assert(N > 0 && N % 2 == 0, "N must be a positive, even number");
 
-  thrd_t thrd[N];
-  CoreCall params[N];
+  thrd_t *thrd = ecalloc(N, sizeof(thrd_t));
+  CoreCall *params = ecalloc(N, sizeof(CoreCall));
   char *computation = "nGSGSGS";
-  uint64_t res[N];
+  uint64_t *res = ecalloc(N, sizeof(uint64_t));
   size_t n;
 
   for (n = 0; n < N; ++n) res[n] = n & 1 ? n - 1 : n + 1;
