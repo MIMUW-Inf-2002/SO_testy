@@ -106,5 +106,9 @@ main(void)
   for (n = 0; n < N; ++n) thrd_join(thrd[n], NULL);
   for (n = 0; n < N; ++n) assert(params[n].res == res[n]);
 
+  free(thrd);
+  free(params);
+  free(res);
+
   return 0;
 }
