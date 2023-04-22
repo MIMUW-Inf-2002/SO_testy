@@ -107,5 +107,6 @@ main(void)
 
   free(thrd);
   free(cc);
+  free(value);
   return EXIT_SUCCESS;
 }
