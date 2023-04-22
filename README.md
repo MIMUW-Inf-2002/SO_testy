@@ -34,3 +34,28 @@ Aby uruchomić testy należy wykonać polecenie:
   udaje się je odpalić, ale zazwyczaj failują. Jeśli masz dostępne ponad 4GB
   ramu, to możesz je odkomentować.
 </details>
+
+## Zadanie 2 - Rozproszona maszyna stosowa
+
+Aby uruchomić testy umieść plik o nazwie `core.asm` w katalogu
+`zad2`. Następnie wejdź do niego, skompiluj i odpal testy:
+
+```
+make
+```
+
+Przy tworzeniu testów najlepiej używać funkcji `core_test` zamiast `core`.
+Zdefiniowana jest w pliku `core_test.asm` i ma taki sam interfejs jak `core`.
+
+#### Opisy testów
+
+<details><summary>kwasow</summary>
+  <ul>
+    <li> kwasow_simple – proste testy sprawdzające pojedyncze operacje</li>
+    <li> kwasow_advanced (część 1) – dwa testy, które sprawdzają, czy funkcja
+      core nie psuje się, jeśli funkcje get_value i put_value zmodyfikują
+      wartości w rejestrach</li>
+    <li> kwasow_advanced (część 2) – test sprawdza, czy funkcja core nie psuje
+      (przywraca) wartości w rejestrach, w których powinna to zrobić</li>
+  </ul>
+</details>
