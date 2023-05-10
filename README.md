@@ -59,3 +59,16 @@ Zdefiniowana jest w pliku `core_test.asm` i ma taki sam interfejs jak `core`.
       (przywraca) wartości w rejestrach, w których powinna to zrobić</li>
   </ul>
 </details>
+
+## Zadanie 3
+
+Jak odpalić basic testy:
+<ol>
+  <li> Skopiuj folder basic_tests/ na MINIX </li>
+  <li> Wejdź do folderu i wywołaj </li>
+</ol>
+```        
+make main
+./main
+```
+UWAGA! Niektóre procesy czekają ileś sekund na to, żeby inne procesy im wysyłały kredyty (możliwe, że trzeba będzie zwiększyć te wartości).
