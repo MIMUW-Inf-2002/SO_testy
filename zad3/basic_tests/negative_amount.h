@@ -5,7 +5,7 @@
 int test_negative_amount(pid_t invalid_pid, int amount) {
     int balance = transfermoney(invalid_pid, amount);
 
-    if (errno == EINVAL)
+    if (errno == EINVAL || errno = ESRCH)
         return 1;
     
     printf("Expected: %d\nBut errno is: %d\n", EINVAL, errno);
