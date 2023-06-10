@@ -8,19 +8,21 @@ które mają być wykonywane na hoście.
   1. Wpisz w pliku `config.sh` na jakim porcie działa MINIX,
   2. Upewnij się, że masz jakikolwiek klucz publiczny do komunikacji przez ssh. 
         Podaj ścieżkę do klucza w pliku `config.sh`
-  2. Nadaj uprawnienia wykonywalne wszystkim plikom `.sh` w folderze `ssh-tests`.
+  2. Nadaj uprawnienia wykonywalne wszystkim plikom `*.sh` w folderze `ssh-tests`.
 
 ## Przy resetowaniu minixa
 
-Aby dodać nowego użytkownika `foo`, można uruchomić `do_config.sh`. Można również skopiować linijkę z poleceniem dodawania do skryptu patchującego lub wpisać ją ręcznie.
+Aby dodać nowego użytkownika `foo`, można uruchomić `do_config.sh`, które również skopiuje klucz ssh do obu użytkowników. 
+Można również dopisać sobie dodawanie nowego użytkownika do swojego skryptu patchującego, aby działo się to automatycznie.
 
 ## Uruchamianie testów
 
-Testy uruchamia się wywołując `run_tests.sh` z folderu `ssh-tests`. Skrypt kopiuje folder `tests` na MINIXa i kompiluje programy, które są w środku. Następnie uruchamia testy `.sh`.
+Testy uruchamia się wywołując `run_tests.sh` z folderu `ssh-tests`. Skrypt kopiuje folder `tests` na MINIXa i kompiluje programy, które są w środku. 
+Następnie uruchamia wszystkie testy w postaci `test*.sh`. Można również odpalić każdy test osobno, po prostu jego nazwę.
 
 Krótkie opisy testów znajdują się w poszczególnych plikach `.sh`. Należy mieć mieć na uwadze, że po nieudanych testach, pojawiają się problemy takie jak:
 
-- nieudane odblokowanie plik itd., mogą powodować, że kolejne testy przekroczą `NR_EXCLUSIVE = 8`
+- nieudane odblokowania plików itd., mogą powodować, że kolejne testy przekroczą `NR_EXCLUSIVE = 8`
 - powtórne uruchomienie testów dzieje się na tych samych plikach, blokady nie są resetowane (można je zresetować rebootem)
 
 ## Dodawanie nowych testów
