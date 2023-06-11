@@ -67,8 +67,14 @@ Jak odpalić basic testy:
   <li> Skopiuj folder basic_tests/ na MINIX </li>
   <li> Wejdź do folderu i wywołaj </li>
 </ol>
-```        
+
+```
 make main
 ./main
 ```
+
 UWAGA! Niektóre procesy czekają ileś sekund na to, żeby inne procesy im wysyłały kredyty (możliwe, że trzeba będzie zwiększyć te wartości).
+
+## Zadanie 5
+
+Testy opierają się na komunikacji przez ssh i sshpass, szczegóły w pliku `README.md` w folderze `zad5`.
