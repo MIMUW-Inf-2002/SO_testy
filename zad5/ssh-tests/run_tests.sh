@@ -1,8 +1,8 @@
 #!/bin/bash
 source config.sh
 
-scp -i $SSH_KEY -P $PORT -r ../tests root@localhost:/
-ssh -i $SSH_KEY -p $PORT root@localhost "cd /tests && make all"
+sshpass -p $ROOT_PASSWD scp -P $PORT -r ../tests root@localhost:/
+sshpass -p $ROOT_PASSWD ssh -p $PORT root@localhost "cd /tests && make all"
 
 if [ $? -ne 0 ]
 then
