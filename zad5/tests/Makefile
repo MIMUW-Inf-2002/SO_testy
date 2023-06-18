@@ -4,4 +4,7 @@ exclusive: exclusive.c
 fexclusive: fexclusive.c
 	clang -O2 -o $@ $<
 
-all: exclusive fexclusive
+open_time: open_util.c
+	clang -O2 -o $@ $<
+
+all: exclusive fexclusive open_util
