@@ -49,11 +49,12 @@ int main(int argc, char *argv[]) {
 
     if (unlock_flag_no == 5){
         printf("Closing file...\n");
-        close(res);
+        close(fd);
         return 0;
     }
 
     res = vfs_fexclusive(fd, unlock_flag);
+    close(fd);
 
     if (res != res_unlock || errno != errno_unlock){
         printf("Unlock, expected: res=%d errno=%d (%s, %s)\n", res_unlock, errno_unlock, errnoname(errno_unlock), strerror(errno_unlock));
