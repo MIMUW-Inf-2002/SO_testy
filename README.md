@@ -78,3 +78,12 @@ UWAGA! Niektóre procesy czekają ileś sekund na to, żeby inne procesy im wysy
 ## Zadanie 5
 
 Testy opierają się na komunikacji przez ssh i sshpass, szczegóły w pliku `README.md` w folderze `zad5`.
+
+## Zadanie poprawkowe 1
+
+Testów nie ma i nie będzie -- chyba, że ktoś wyczaruje.
+
+## Zadanie poprawkowe 2
+
+Są jakieś pliki, które wystarczy przekopoiwać na minixa, skompilować i jak po odpaleniu się kończą, to jest ok.
+Rentib wrzucił testy, nie dlatego, że poprawia, tylko dlatego, że mu się nudzi.
